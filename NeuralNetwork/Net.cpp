@@ -78,7 +78,7 @@ const std::vector<Net::Neyron>& Net::predict()
 }
 void Net::train(double learning_rate, size_t max_epochs, double max_mse, const std::vector<std::vector<double>>& in, const std::vector<std::vector<double>>& out)
 {
-	double mse = 999, old_mse = 999;
+	double mse = 999;
 	size_t i = 0;
 	while (mse > max_mse && i < max_epochs)
 	{
@@ -98,24 +98,7 @@ void Net::train(double learning_rate, size_t max_epochs, double max_mse, const s
 		}
 		
 		if (i % 100000 == 0)
-		{
 			cout << "mse: " << mse << endl;
-			if (old_mse - mse < max_mse / 10)
-			{
-				cout << "RE" << endl;
-				random_device rd;
-				mt19937 gen(rd());
-				uniform_int_distribution<size_t> dist(0, 1000);
-
-				for (size_t l = 0; l < net.size(); l++)
-					for (size_t n = 0; n < net[l].size(); n++)
-						for (size_t nw = 0; nw < net[l][n].weights.size(); nw++)
-						{
-							net[l][n].weights[nw] = dist(gen) / 1000.f;
-						}
-			}
-			old_mse = mse;
-		}
 		i++;
 	}
 	cout << "mse: " << mse << endl;
