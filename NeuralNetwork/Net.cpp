@@ -97,7 +97,7 @@ void Net::train(double learning_rate, size_t max_epochs, double max_mse, const s
 				mse += pow(net[net.size() - 1][i].output - out[c][i], 2);
 		}
 		
-		if (i % 100000 == 0)
+		if (i % 10000 == 0)
 			cout << "mse: " << mse << endl;
 		i++;
 	}
