@@ -11,30 +11,30 @@ double out(double d)
 
 int main()
 {
-	Net nn({ 4, 4, 3 });
+	Net nn({ 3, 4, 3 });
 
 	//nn.net[2][0].active = Net::Neyron::Threshold;
 
 
 	vector<vector<double>> t_case{
-		{1, 0, 0, 0},
-		//{1, 0, 0, 1},
-		{1, 0, 1, 0},
-		{1, 0, 1, 1},
-		{1, 1, 0, 0},
-		{1, 1, 0, 1},
-		{1, 1, 1, 0},
-		//{1, 1, 1, 1},
+		{0, 0, 0},
+		{0, 0, 1},
+		{0, 1, 0},
+		{0, 1, 1},
+		{1, 0, 0},
+		{1, 0, 1},
+		{1, 1, 0},
+		{1, 1, 1},
 	};
 	vector<vector<double>> t_result{
 		{1, 1, 1},
-		//{1, 1, 0},
+		{1, 1, 0},
 		{1, 0, 1},
 		{1, 0, 0},
 		{0, 1, 1},
 		{0, 1, 0},
 		{0, 0, 1},
-		//{0, 0, 0},
+		{0, 0, 0},
 	};
 
 	cout << fixed;
@@ -61,7 +61,7 @@ int main()
 
 	cout << "Test 1" << endl;
 	{
-		vector<double> in = {1, 1, 1, 1};
+		vector<double> in = {1, 1, 1};
 		cout << "{ ";
 		for (size_t n = 0; n < in.size(); n++)
 		{
@@ -79,7 +79,7 @@ int main()
 
 	cout << "Test 2" << endl;
 	{
-		vector<double> in = {1, 0, 0, 1};
+		vector<double> in = {0, 0, 0};
 		cout << "{ ";
 		for (size_t n = 0; n < in.size(); n++)
 		{
